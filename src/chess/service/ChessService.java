@@ -9,6 +9,9 @@ import java.util.stream.Collectors;
 
 public class ChessService {
 
+    /**
+     * Creates piece, returns  possible moves
+     */
     public List<String> getMoves(String input) {
         String[] parts = input.split(",");
         if (parts.length != 2) {
@@ -22,6 +25,7 @@ public class ChessService {
         return piece.getPossibleMoves()
                 .stream()
                 .map(Position::toString)
+                .sorted()
                 .collect(Collectors.toList());
     }
 }

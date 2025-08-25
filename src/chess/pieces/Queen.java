@@ -20,14 +20,20 @@ public class Queen extends Piece {
 
         int[] directions = {-1, 0, 1};
 
-        for (int dc : directions) {
-            for (int dr : directions) {
-                if (dc == 0 && dr == 0) continue;
+        /*
+         * Below for loops will generate all possible directions for queen movement until boundaries are reached
+         * All 8 directions, unlimited steps
+         * {{-1,-1},{-1,0},{-1,1},{0,-1},{0,0},{0,1},{1,-1},{1,0},{1,1}}
+         *  check for {0,0} is added as that represents current position
+         */
+        for (int directionColumn : directions) {
+            for (int directionRow : directions) {
+                if (directionColumn == 0 && directionRow == 0) continue;
                 char newCol = col;
                 int newRow = row;
                 while (true) {
-                    newCol += dc;
-                    newRow += dr;
+                    newCol += directionColumn;
+                    newRow += directionRow;
                     if (!isValidPosition(newCol, newRow)) break;
                     moves.add(new Position(newCol, newRow));
                 }

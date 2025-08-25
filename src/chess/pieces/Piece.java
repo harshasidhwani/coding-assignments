@@ -3,6 +3,7 @@ package chess.pieces;
 import chess.model.Position;
 import java.util.List;
 
+//Common abstract class for all pieces, has position attribute
 public abstract class Piece {
     protected Position position;
 

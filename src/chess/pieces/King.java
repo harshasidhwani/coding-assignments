@@ -16,11 +16,16 @@ public class King extends Piece {
         char col = position.getColumn();
         int row = position.getRow();
 
-        for (int dc = -1; dc <= 1; dc++) {
-            for (int dr = -1; dr <= 1; dr++) {
-                if (dc == 0 && dr == 0) continue;
-                char newCol = (char) (col + dc);
-                int newRow = row + dr;
+        /*
+         *  Below for loops will generate all possible directions for queen movement until boundaries are reached
+         *         {{-1,-1},{-1,0},{-1,1},{0,-1},{0,0},{0,1},{1,-1},{1,0},{1,1}}
+         *         check for {0,0} is added as that represents current position
+         */
+        for (int directionColumn = -1; directionColumn <= 1; directionColumn++) {
+            for (int directionRow = -1; directionRow <= 1; directionRow++) {
+                if (directionColumn == 0 && directionRow == 0) continue;
+                char newCol = (char) (col + directionColumn);
+                int newRow = row + directionRow;
                 if (isValidPosition(newCol, newRow)) {
                     moves.add(new Position(newCol, newRow));
                 }

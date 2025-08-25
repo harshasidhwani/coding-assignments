@@ -1,6 +1,8 @@
 package chess.model;
 
 public class Position {
+
+    // Position class has column and row which together represent square on board
     private char column; // A-H
     private int row;     // 1-8
 
@@ -19,6 +21,11 @@ public class Position {
     public int getRow() {
         return row;
     }
+
+    /*
+     *  Method to verify every move of king,queen, pawn is within the boundary of chess board
+     *  Validates positions (A1 to H8).
+     */
 
     public static boolean isValid(char column, int row) {
         return (column >= 'A' && column <= 'H') && (row >= 1 && row <= 8);

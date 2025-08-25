@@ -35,14 +35,14 @@ public class ChessServiceTest {
 
     @Test
     void testInvalidInput() {
-        assertThrows(IllegalArgumentException.class, () -> service.getMoves("Dragon, Z9"));
+        assertThrows(IllegalArgumentException.class, () -> service.getMoves("Bishop, Z9"));
     }
 
     // Edge cases
     @Test
     void testPawnAtLastRankHasNoMoves() {
         List<String> moves = service.getMoves("Pawn, D8");
-        assertTrue(moves.isEmpty(), "Pawn at last rank should have no moves");
+        assertTrue(moves.isEmpty(), "Moves not possible for given input");
     }
 
     @Test
@@ -63,7 +63,7 @@ public class ChessServiceTest {
     void testQueenAtCorner() {
         List<String> moves = service.getMoves("Queen, H8");
         // Should cover row, column, and diagonals
-        assertTrue(moves.contains("A8"));  // left along row
+        assertTrue(moves.contains("A8"));  // left rowwise
         assertTrue(moves.contains("H1"));  // down column
         assertTrue(moves.contains("A1"));  // diagonal
     }
